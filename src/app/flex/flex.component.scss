@@ -1,0 +1,35 @@
+@import "../../styles-var/variables";
+
+.container-fluid {
+  display: flex;
+  height: calc(100vh - $header-height);
+  overflow-y: hidden;
+  flex-direction: column;
+}
+
+.main-body {
+  background-color: yellow;
+  flex: 1 1 50px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter {
+  flex: 0 0 30px;
+  background-color: antiquewhite;
+}
+
+.text-area {
+  flex: 1 1 50px;
+  overflow-y: auto;
+}
+
+.footer {
+  background-color: red;
+  flex: 0 0 100px;
+}
+
+.paragraph {
+  height: 30px;
+}

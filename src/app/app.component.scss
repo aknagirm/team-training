@@ -1,0 +1,10 @@
+@import "../styles-var/variables";
+
+.header {
+  display: flex;
+  align-items: center;
+  background-color: darkcyan;
+  height: $header-height;
+  width: 100%;
+  color: white;
+}

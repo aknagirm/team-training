@@ -1,0 +1,252 @@
+<div class="container-fluid my-3">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="button-group row justify-content-between">
+        <button
+          mat-raised-button
+          (click)="switchMapCall()"
+          class="col-lg-2 col-md-5 m-1"
+          [color]="selectedDataObj?.value === 'switchMap' ? 'primary' : ''"
+        >
+          Switch Map
+        </button>
+        <button
+          mat-raised-button
+          (click)="mergeMapCall()"
+          class="col-lg-2 col-md-5 m-1"
+          [color]="selectedDataObj?.value === 'mergeMap' ? 'primary' : ''"
+        >
+          Merge Map
+        </button>
+        <button
+          mat-raised-button
+          (click)="concatMapCall()"
+          class="col-lg-2 col-md-5 m-1"
+          [color]="selectedDataObj?.value === 'concatMap' ? 'primary' : ''"
+        >
+          Concat Map
+        </button>
+        <button
+          mat-raised-button
+          (click)="exhaustMapCall()"
+          class="col-lg-2 col-md-5 m-1"
+          [color]="selectedDataObj?.value === 'exhaustMap' ? 'primary' : ''"
+        >
+          Exhaust Map
+        </button>
+        <button
+          mat-raised-button
+          (click)="combineLatestCall()"
+          class="col-lg-2 col-md-5 m-1"
+          [color]="selectedDataObj?.value === 'combineLatest' ? 'primary' : ''"
+        >
+          Combine Latest
+        </button>
+        <button
+          mat-raised-button
+          (click)="mergeCall()"
+          class="col-lg-2 col-md-5 m-1"
+          [color]="selectedDataObj?.value === 'merge' ? 'primary' : ''"
+        >
+          Merge
+        </button>
+        <button
+          mat-raised-button
+          (click)="concatCall()"
+          class="col-lg-2 col-md-5 m-1"
+          [color]="selectedDataObj?.value === 'concat' ? 'primary' : ''"
+        >
+          Concat
+        </button>
+        <button
+          mat-raised-button
+          (click)="forkJoinCall()"
+          class="col-lg-2 col-md-5 m-1"
+          [color]="selectedDataObj?.value === 'forkJoin' ? 'primary' : ''"
+        >
+          Fork Join
+        </button>
+        <button
+          mat-raised-button
+          (click)="zipCall()"
+          class="col-lg-2 col-md-5 m-1"
+          [color]="selectedDataObj?.value === 'zip' ? 'primary' : ''"
+        >
+          Zip
+        </button>
+        <button
+          mat-raised-button
+          (click)="withLatestFromCall()"
+          class="col-lg-2 col-md-5 m-1"
+          [color]="selectedDataObj?.value === 'withLatestFrom' ? 'primary' : ''"
+        >
+          With Latest From
+        </button>
+      </div>
+      <hr />
+      <div class="definition-container" *ngIf="selectedDataObj">
+        <h1>{{ selectedDataObj.label }}</h1>
+        <ul>
+          <li [innerHTML]="selectedDataObj.definition1"></li>
+          <li [innerHTML]="selectedDataObj.definition2"></li>
+          <li [innerHTML]="selectedDataObj.definition3"></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card-container shadow">
+        <div class="card-header">
+          <h1>{{ selectedDataObj ? selectedDataObj.label : "Result" }}</h1>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>
+              First obs will emit <strong>{{ firstObsNumber }}</strong> new
+              values every <strong>{{ intervalForFirst }}</strong> seconds for
+              <strong>{{ intervalForFirst * firstObsNumber }}</strong> seconds
+              <div class="timer-btn-wrapper">
+                <button
+                  mat-icon-button
+                  class="small-icon-button"
+                  color="primary"
+                  (click)="changeTimer(1, 1)"
+                >
+                  <mat-icon>add</mat-icon>
+                </button>
+                <button
+                  mat-icon-button
+                  class="small-icon-button"
+                  color="primary"
+                  matTooltip="Inc/Dec duration for 1st Obs"
+                >
+                  <mat-icon>more_time</mat-icon>
+                </button>
+                <button
+                  mat-icon-button
+                  class="small-icon-button"
+                  color="primary"
+                  (click)="changeTimer(1, 0)"
+                >
+                  <mat-icon>remove</mat-icon>
+                </button>
+              </div>
+              <div class="obs-btn-wrapper">
+                <button
+                  mat-icon-button
+                  class="small-icon-button"
+                  color="primary"
+                  (click)="changeObjects(1, 1)"
+                >
+                  <mat-icon>add</mat-icon>
+                </button>
+                <button
+                  mat-icon-button
+                  class="small-icon-button"
+                  color="primary"
+                  matTooltip="Inc/Dec number of 1st Obs"
+                >
+                  <mat-icon>radio_button_checked</mat-icon>
+                </button>
+                <button
+                  mat-icon-button
+                  class="small-icon-button"
+                  color="primary"
+                  (click)="changeObjects(1, 0)"
+                >
+                  <mat-icon>remove</mat-icon>
+                </button>
+              </div>
+            </li>
+            <br />
+            <li>
+              Second obs will emit <strong>{{ secondObsNumber }}</strong> new
+              values every <strong>{{ intervalForSecond }}</strong> seconds for
+              <strong>{{ intervalForSecond * secondObsNumber }}</strong> seconds
+              <div class="timer-btn-wrapper">
+                <button
+                  mat-icon-button
+                  class="small-icon-button"
+                  color="primary"
+                  (click)="changeTimer(2, 1)"
+                >
+                  <mat-icon>add</mat-icon>
+                </button>
+                <button
+                  mat-icon-button
+                  class="small-icon-button"
+                  color="primary"
+                  matTooltip="Inc/Dec duration for 2st Obs"
+                >
+                  <mat-icon>more_time</mat-icon>
+                </button>
+                <button
+                  mat-icon-button
+                  class="small-icon-button"
+                  color="primary"
+                  (click)="changeTimer(2, 0)"
+                >
+                  <mat-icon>remove</mat-icon>
+                </button>
+              </div>
+              <div class="obs-btn-wrapper">
+                <button
+                  mat-icon-button
+                  class="small-icon-button"
+                  color="primary"
+                  (click)="changeObjects(2, 1)"
+                >
+                  <mat-icon>add</mat-icon>
+                </button>
+                <button
+                  mat-icon-button
+                  class="small-icon-button"
+                  color="primary"
+                  matTooltip="Inc/Dec number of 2st Obs"
+                >
+                  <mat-icon>radio_button_checked</mat-icon>
+                </button>
+                <button
+                  mat-icon-button
+                  class="small-icon-button"
+                  color="primary"
+                  (click)="changeObjects(2, 0)"
+                >
+                  <mat-icon>remove</mat-icon>
+                </button>
+              </div>
+            </li>
+          </ul>
+          <hr />
+          <p *ngIf="!selectedDataObj?.label; else objSelected">
+            Choose any operator to see the stream
+          </p>
+          <ng-template #objSelected>
+            <p *ngIf="!consolidatedData.length; else resultTable">
+              Data loading...
+            </p>
+            <ng-template #resultTable>
+              <table class="table table-sm table-border border">
+                <thead>
+                  <tr>
+                    <td>Seconds</td>
+                    <td>First Data</td>
+                    <td>Second Data</td>
+                    <td>Consolidated Data</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of consolidatedData">
+                    <td>{{ data.time }}</td>
+                    <td>{{ data.firstData }}</td>
+                    <td>{{ data.secondData }}</td>
+                    <td>{{ data.finalData }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-template>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
